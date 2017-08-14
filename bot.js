@@ -21,7 +21,7 @@ fs.readdir("./cmds", (err, files) => {
 
     jsfiles.forEach((f, i) => {
       let props = require(`./cmds/${f}`);
-      console.log(`${i + 1}: ${f} loaded!`)
+      console.log(`${i + 1}: ${f} loaded!`);
       client.commands.set(props.help.name, props);
     });
 });
@@ -29,6 +29,8 @@ fs.readdir("./cmds", (err, files) => {
 
 client.on("ready", async () => {
    console.log(`${client.user.username} is ready! - Groooowwwl! `);
+console.log(client.commands);
+
 
   client.setInterval(() => {
     for(let i in client.mutes) {
