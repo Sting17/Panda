@@ -30,10 +30,9 @@ fs.readdir("./cmds", (err, files) => {
 client.on("ready", async () => {
    console.log(`${client.user.username} is ready! - Groooowwwl! `);
 
-// client.on("debug", async(info)=>{
-//     console.log(info);
-// })
-
+ client.on("debug", async(info)=>{
+     console.log(info);
+ })
 
   client.setInterval(() => {
     for(let i in client.mutes) {
@@ -81,9 +80,6 @@ client.on("message", async message => {
 
     let cmd = client.commands.get(command.slice(prefix.length));
     if(cmd) cmd.run(client, message, args);
-
-
-
 });
 
 client.login(botSettings.token);
