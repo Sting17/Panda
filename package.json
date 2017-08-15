@@ -6,6 +6,6 @@
   "author": "Sting17",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.1.0",
-    }
+    "discord.js": "^11.1.0"
+  }
 }

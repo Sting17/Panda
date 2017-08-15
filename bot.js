@@ -29,7 +29,10 @@ fs.readdir("./cmds", (err, files) => {
 
 client.on("ready", async () => {
    console.log(`${client.user.username} is ready! - Groooowwwl! `);
-console.log(client.commands);
+
+// client.on("debug", async(info)=>{
+//     console.log(info);
+// })
 
 
   client.setInterval(() => {
