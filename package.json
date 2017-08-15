@@ -5,8 +5,9 @@
   "main": "index.js",
   "author": "Sting17",
   "license": "ISC",
-  "dependencies": {    
+  "dependencies": {
     "discord.js": "^11.1.0",
+    "gm": "^1.23.0",
     "pubg-api-redis": "^2.0.4"
   }
 }
