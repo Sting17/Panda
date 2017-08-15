@@ -3,6 +3,9 @@ const Discord = require("discord.js");
 const fs = require("fs");
 
 const prefix = botSettings.prefix;
+// const yt_api_key = botSettings.yt_api_key;
+
+
 
 const client = new Discord.Client({disableEveryone: true})
 client.commands = new Discord.Collection();
@@ -18,11 +21,12 @@ fs.readdir("./cmds", (err, files) => {
 
     }
     console.log(`Loading ${jsfiles.length} commands!`)
-
+    
     jsfiles.forEach((f, i) => {
       let props = require(`./cmds/${f}`);
       console.log(`${i + 1}: ${f} loaded!`);
       client.commands.set(props.help.name, props);
+
     });
 });
 
