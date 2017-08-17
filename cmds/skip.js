@@ -1,30 +1,27 @@
-// const Discord = module.require("discord.js");
-// const ytdl = require("ytdl-core");
-// //const request = require("request");
-// //const getYouTubeID = require("get-youtube-id");
-// //const fetchVideoInfo = require("yourtube-info")
-// //
-//
-// module.exports.run = async (client, message, args) => {
-//
-//   function play(connection, message) {
-//     var server = servers[message.guild.id];
-//
-//     server.dispatcher = connection.playStream(ytdl(server.queue[1], {filter: "audioonly"}));
-//
-//     server.queue.shift();
-//
-//     server.dispatcher.on("end", function() {
-//         if (server.queue[1]) play(connection, message);
-//         else connection.disconnect();
-//     });
-//   }
-//
-//
-//       if (server.dispatcher) server.dispatcher.end();
-//
-//   };
-// }
+const Discord = module.require("discord.js");
+const ytdl = require("ytdl-core");
+
+module.exports.run = async (client, message, args) => {
+
+
+  function play(connection, message) {
+    var server = servers[message.guild.id];
+
+    server.dispatcher = connection.playStream(ytdl(server.queue[1], {filter: "audioonly"}));
+
+    server.queue.shift();
+
+    server.dispatcher.on("end", function() {
+        if (server.queue[1]) play(connection, message);
+        else connection.disconnect();
+    });
+  }
+
+
+      if (server.dispatcher) server.dispatcher.end();
+
+  };
+
 //
 //
 //
@@ -66,8 +63,8 @@
 //
 //
 //
-//
-// module.exports.help = {
-//   name: "skip",
-//
-// }
+
+
+module.exports.help = {
+  name: "skip",
+ }
