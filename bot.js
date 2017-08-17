@@ -4,9 +4,15 @@ const fs = require("fs");
 
 const prefix = botSettings.prefix;
 
+// const yt_api_key = botSettings.yt_api_key;
 const client = new Discord.Client({disableEveryone: true})
+
+
 client.commands = new Discord.Collection();
 client.mutes = require("./mutes.json");
+
+//For Voice Channels/Audio Playback blank servers object
+var servers = {};
 
 fs.readdir("./cmds", (err, files) => {
     if(err) console.error(err);
@@ -23,6 +29,7 @@ fs.readdir("./cmds", (err, files) => {
       let props = require(`./cmds/${f}`);
       console.log(`${i + 1}: ${f} loaded!`);
       client.commands.set(props.help.name, props);
+
     });
 });
 
@@ -79,7 +86,7 @@ client.on("message", async message => {
     if(!command.startsWith(prefix)) return;
 
     let cmd = client.commands.get(command.slice(prefix.length));
-    if(cmd) cmd.run(client, message, args);
+    if(cmd) cmd.run(client, message, args, servers);
 });
 
 client.login(botSettings.token);

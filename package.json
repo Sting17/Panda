@@ -5,8 +5,9 @@
   "main": "index.js",
   "author": "Sting17",
   "license": "ISC",
-  "dependencies": {    
+  "dependencies": {
     "discord.js": "^11.1.0",
-    "pubg-api-redis": "^2.0.4"
+    "pubg-api-redis": "^2.0.4",
+    "ytdl-core": "^0.15.2"
   }
 }
