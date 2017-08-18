@@ -3,13 +3,16 @@ const Discord = require("discord.js");
 const fs = require("fs");
 
 const prefix = botSettings.prefix;
+
 // const yt_api_key = botSettings.yt_api_key;
-
-
-
 const client = new Discord.Client({disableEveryone: true})
+
+
 client.commands = new Discord.Collection();
 client.mutes = require("./mutes.json");
+
+//For Voice Channels/Audio Playback blank servers object
+var servers = {};
 
 fs.readdir("./cmds", (err, files) => {
     if(err) console.error(err);
@@ -34,10 +37,9 @@ fs.readdir("./cmds", (err, files) => {
 client.on("ready", async () => {
    console.log(`${client.user.username} is ready! - Groooowwwl! `);
 
-// client.on("debug", async(info)=>{
-//     console.log(info);
-// })
-
+ client.on("debug", async(info)=>{
+     console.log(info);
+ })
 
   client.setInterval(() => {
     for(let i in client.mutes) {
@@ -84,10 +86,7 @@ client.on("message", async message => {
     if(!command.startsWith(prefix)) return;
 
     let cmd = client.commands.get(command.slice(prefix.length));
-    if(cmd) cmd.run(client, message, args);
-
-
-
+    if(cmd) cmd.run(client, message, args, servers);
 });
 
 client.login(botSettings.token);
